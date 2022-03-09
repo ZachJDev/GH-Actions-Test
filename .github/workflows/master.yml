@@ -5,7 +5,7 @@ on:
     types:
       - closed
     branches:
-      - staging
+      - master
 
 jobs:
   test-pr:
