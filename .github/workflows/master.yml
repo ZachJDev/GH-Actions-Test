@@ -1,0 +1,25 @@
+name: Test PR
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - staging
+
+jobs:
+  test-pr:
+    name: test PR changed files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v2-beta
+        with:
+          ref: master
+      - name: get changed files
+        id: changed-functions
+        uses: tj-actions/changed-files@v14.2
+        with:
+          base_sha: ${{github.event.pull_request.base.sha}}
+      - name: echo changed files
+        run: echo "${{steps.changed-functions.output.all_changed_files}}"
