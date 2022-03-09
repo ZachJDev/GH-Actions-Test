@@ -23,6 +23,6 @@ jobs:
           base_sha: ${{github.event.pull_request.base.sha}}
       - name: echo changed files
         run: |
-          for file in ${{ steps.changed-functions.output.all_changed_files }}; do
+          for file in ${{ steps.changed-functions.outputs.all_changed_files }}; do
             echo "$file was changed"
           done
