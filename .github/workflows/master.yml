@@ -20,7 +20,9 @@ jobs:
         id: changed-functions
         uses: tj-actions/changed-files@v14.2
         with:
-          base_sha: ${{github.event.pull_request.base.sha}}
+           since_last_remote_commit: "true"
+           fetch-depth: 0
+#          base_sha: ${{github.event.pull_request.base.sha}}
       - name: echo changed files
         run: |
           for file in ${{ steps.changed-functions.outputs.all_changed_files }}; do
